@@ -1,14 +1,14 @@
 <template>
   <Menu ref="menu" :active-name="active" :open-names="open" width="auto" accordion>
-    <Menus />
+    <MainMenu />
   </Menu>
 </template>
 <script>
-import Menus from '@/view/main/menu'
+import MainMenu from '@/view/main/menu'
 
 export default {
   components: {
-    Menus
+    MainMenu
   },
   data() {
     return {

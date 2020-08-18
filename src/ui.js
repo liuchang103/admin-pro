@@ -13,9 +13,11 @@ import '@/style/app.less'
 
 // router 进度条显示
 import router from './route'
+import { setTitle } from './tools'
 
 router.beforeEach((to, from, next) => {
   ViewUI.LoadingBar.start();
+  setTitle(to.meta.title)
   next();
 });
 router.afterEach(() => {
