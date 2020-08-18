@@ -6,8 +6,7 @@ export default {
   get(name) {
     let value = window.localStorage.getItem(name)
     if(!value) return value
-
-    // 检查 JSON
+    
     return value.startsWith('{') || value.startsWith('[') ? JSON.parse(value) : value
   },
 

@@ -1,4 +1,3 @@
-// 引入 Ui
 import './ui'
 
 import Vue from 'vue'

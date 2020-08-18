@@ -12,23 +12,28 @@
       <Content>
         <router-view />
       </Content>
+      <Footer>
+        <MainFooter />
+      </Footer>
     </Layout>
   </Layout>
 </template>
 <script>
 import Menu from './components/menu';
-import Logo from '@/view/main/logo';
 import NavLeft from './components/nav-left';
 import NavRight from './components/nav-right';
+import Logo from '@/view/main/logo';
+import MainFooter from '@/view/main/footer';
 
 import './main.less'
 
 export default {
   components:{
-    Logo,
     Menu,
     NavLeft,
-    NavRight
+    NavRight,
+    Logo,
+    MainFooter
   }
 };
 </script>
