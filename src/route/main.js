@@ -1,6 +1,7 @@
 module.exports = [
   {
-    path: '',
+    path: '/',
+    name: 'home',
     component: () => import('@/view/home.vue'),
     meta: {
       title: 'menu.home',

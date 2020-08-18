@@ -1,4 +1,5 @@
 import './ui'
+import './permission'
 
 import Vue from 'vue'
 import App from './App'

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <MenuItem name="home" to="/main"><Icon type="md-home" />{{ $t('menu.home') }} <Badge :count="1" type="warning" class="scoped-right" /></MenuItem>
+    <MenuItem name="home" to="/main/"><Icon type="md-home" />{{ $t('menu.home') }} <Badge :count="1" type="warning" class="scoped-right" /></MenuItem>
     <Submenu name="1">
       <template slot="title">
         <Icon type="md-document" />Navigation One

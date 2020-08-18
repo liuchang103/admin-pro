@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import { token, userInfo } from '@/tools';
+
 export default {
   data () {
     return {
@@ -32,8 +34,16 @@ export default {
   },
 
   methods: {
-    submit () {
+    // 登陆页当检测已登陆后，将自动跳转
+    to () {
+      this.$router.push({ name: 'home' })
+    },
 
+    submit () {
+      // 模拟登陆
+      token('123')
+      userInfo({ username: 'Administrator' })
+      this.to()
     }
   }
 }

@@ -1,11 +1,10 @@
 <template>
     <div @click="add">
         user {{ a }}
-        <Page :total="100" show-sizer />
-        {{ $t('i.datepicker.clear') }}
     </div>
 </template>
 <script>
+import http from '@/http';
 export default {
     data() {
         return {
@@ -15,6 +14,9 @@ export default {
     methods:{
         add() {
             this.a++
+            http('/').then(res => {
+                console.log(res)
+            })
         }
     }
 }

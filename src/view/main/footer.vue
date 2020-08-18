@@ -1,6 +1,6 @@
 <template>
   <div class="scoped-footer">
-    © 2020 Admin Pro 版权所有
+    © 2020 Admin Pro All rights reserved
   </div>
 </template>
 
