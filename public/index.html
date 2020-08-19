@@ -8,10 +8,50 @@
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
+  <style>
+    html,body,#app{
+      height:100%;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+    }
+    .loading-box{
+      height:100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;  
+    }
+    .loading-content {
+      perspective: 120px;
+    }
+    
+    .loading-plane {
+      width: 3em;
+      height: 3em;
+      background-color: #2d8cf0;
+      transform: rotate(0);
+      animation: flip 1s infinite;
+    }
+    
+    @keyframes flip {
+      50% {
+        transform: rotateY(180deg);
+      }
+      100% {
+        transform: rotateY(180deg) rotateX(180deg);
+      }
+    }
+  </style>
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
-    <div id="app"></div>
+    <div id="app">
+      <div class="loading-box">
+        <div class="loading-content">
+          <div class="loading-plane"></div>
+        </div>
+      </div>
+    </div>
     <!-- built files will be auto injected -->
   </body>
 </html>
