@@ -1,16 +1,17 @@
 <template>
-  <div @click="add">user {{ a }}</div>
+  <div @click="add">user</div>
 </template>
 <script>
 export default {
   data() {
     return {
-      a: 1,
-    };
+      count: 0
+    }
   },
   methods: {
     add() {
-      this.a++;
+      this.count++
+      this.$store.dispatch('app/count', this.count)
     },
   },
 };
