@@ -5,7 +5,7 @@
       <template slot="title">
         <Icon type="md-document" />Navigation One
       </template>
-      <MenuItem name="1-user" to="/main/user"><Icon type="md-leaf" /> Option 1</MenuItem>
+      <MenuItem name="1-user" to="/main/user"><Icon type="md-leaf" /> User</MenuItem>
       <MenuItem name="1-2">Option 2</MenuItem>
     </Submenu>
     <Submenu name="2">

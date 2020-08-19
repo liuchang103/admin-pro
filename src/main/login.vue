@@ -24,7 +24,7 @@ import Footer from '@/view/main/footer'
 import LoginForm from '@/view/main/login/form'
 import LoginLeft from '@/view/main/login/left'
 import Lang from './components/lang'
-import { token } from '@/tools';
+import { token, userInfo, login } from '@/tools';
 
 export default {
   components: {
@@ -35,11 +35,10 @@ export default {
     Footer
   },
   created() {
-    // 检测 token，自动进入
-    if(token()) {
-      this.$nextTick(() => {
-        this.$refs.form.to()
-      })
+    // 自动登陆
+    if(token() && userInfo()) {
+      // 再次登陆
+      login(token(), userInfo())
     }
   }
 }

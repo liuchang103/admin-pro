@@ -1,6 +1,7 @@
 import axios from 'axios'
 import ui from './ui'
-import { token } from '@/tools';
+import lang from '@/lang'
+import { token, logout } from '@/tools';
 
 // 创建基础配置
 const http = axios.create({
@@ -12,6 +13,7 @@ const http = axios.create({
 http.interceptors.request.use(
   // 请求配置
   config => {
+    // 进度条显示
     ui.LoadingBar.start();
 
     // 追加 token
@@ -22,12 +24,37 @@ http.interceptors.request.use(
 );
 
 // 响应拦截器
-http.interceptors.response.use(res =>{
+http.interceptors.response.use(response =>{
+  // 进度条隐藏
   ui.LoadingBar.finish();
-  return res;
+
+  // 取出响应数据
+  let data = response.data
+  
+  // 检测状态码
+  if(data.code > 0) {
+    // 如果未登陆
+    if(data.code == 100) {
+      // 通知消息
+      ui.Notice.error({
+        title: lang.t(data.message),
+        desc: lang.t('failedloginmessage')
+      })
+
+      // 退出登陆
+      return logout()
+    }
+
+    return Promise.reject(data)
+  }
+  
+  return data;
 }, error => {
+  // 错误进度条
   ui.LoadingBar.error();
-  return Promise.reject(error);
+
+  // 提示错误消息
+  ui.Message.error(error.message)
 });
 
 export default http

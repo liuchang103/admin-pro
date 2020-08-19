@@ -45,4 +45,23 @@ meta: {
     title: 'menu.user.log',    // 如：用户日志
     menu: 'user-log'           // 定位到 用户管理 菜单下的 用户日志
 }
+
+meta: {
+    white: true            // 放行白名单，不检查登陆
+}
+```
+
+## 登陆
+全局共用方法，会在所有权限检查地方调用
+```
+import { token, userInfo, login, logout } from '@/tools';
+
+// 获取 token
+token()
+// 获取用户 json
+userInfo()
+// 登录，传入 token 和 用户信息并跳转窗体首页
+login(token, userinfo)
+// 登出，清空 token 和 用户信息并跳转登陆页
+logout()
 ```

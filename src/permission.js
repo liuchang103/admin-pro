@@ -1,10 +1,6 @@
 import router from './route'
 import ui from './ui'
-import { token, setTitle } from '@/tools'
-
-
-// 白名单路由
-const white = ['login']
+import { token, setTitle, logout } from '@/tools'
 
 // 权限验证
 router.beforeEach((to, from, next) => {
@@ -15,10 +11,11 @@ router.beforeEach((to, from, next) => {
   setTitle(to.meta.title)
 
   // 检查白名单和权限
-  if(!white.includes(to.name) && !token()) {
-    // 回到首页
+  if(!to.meta.white && !token()) {
+    // 关闭进度条
     ui.LoadingBar.finish();
-    return next('/')
+    // 退出登陆
+    return logout()
   }
 
   next()

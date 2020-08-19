@@ -1,23 +1,17 @@
 <template>
-    <div @click="add">
-        user {{ a }}
-    </div>
+  <div @click="add">user {{ a }}</div>
 </template>
 <script>
-import http from '@/http';
 export default {
-    data() {
-        return {
-            a: 1
-        }
+  data() {
+    return {
+      a: 1,
+    };
+  },
+  methods: {
+    add() {
+      this.a++;
     },
-    methods:{
-        add() {
-            this.a++
-            http('/').then(res => {
-                console.log(res)
-            })
-        }
-    }
-}
+  },
+};
 </script>

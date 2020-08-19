@@ -19,14 +19,20 @@ const routes = [
   // 404
   {
     path: '*',
-    component: () => import('@/main/404.vue')
+    component: () => import('@/main/404.vue'),
+    meta: {
+      white: true
+    }
   },
   // 登陆页
   {
     path: '/',
     name: 'login',
-    component: () => import('@/main/login.vue')
-  },
+    component: () => import('@/main/login.vue'),
+    meta: {
+      white: true
+    }
+  }
 ]
 
 // 载入路由

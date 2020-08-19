@@ -4,7 +4,7 @@
   </Menu>
 </template>
 <script>
-import MainMenu from '@/view/main/menu'
+import MainMenu from '@/view/main/left/menu'
 
 export default {
   components: {

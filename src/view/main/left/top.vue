@@ -1,3 +1,3 @@
 <template>
-  <div>index</div>
+  <span></span>
 </template>

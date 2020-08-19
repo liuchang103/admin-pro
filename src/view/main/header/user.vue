@@ -26,7 +26,6 @@ export default {
       switch (key) {
         case 'logout':
           logout()
-          this.$router.push({ name: 'login' })
           break;
       }
     },

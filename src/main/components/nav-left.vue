@@ -16,18 +16,18 @@
         <BreadcrumbItem v-if="item.meta.title" :key="key">{{ $t(item.meta.title) }}</BreadcrumbItem>
       </template>
     </Breadcrumb>
-    <Left />
+    <HeaderLeft />
   </div>
 </template>
 
 <script>
 import Records from './records';
-import Left from '@/view/main/header-left';
+import HeaderLeft from '@/view/main/header/left';
 
 export default {
   components: {
     Records,
-    Left
+    HeaderLeft
   }
 }
 </script>

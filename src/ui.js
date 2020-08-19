@@ -11,4 +11,15 @@ import 'normalize.css/normalize.css'
 // 自定义CSS
 import '@/style/app.less'
 
+// 消息提醒配置
+ViewUI.Message.config({
+    top: 75,
+    duration: 3
+});
+
+ViewUI.Notice.config({
+    top: 20,
+    duration: 3
+});
+
 export default ViewUI
