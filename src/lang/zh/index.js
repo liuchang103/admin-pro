@@ -13,5 +13,6 @@ export default {
   failedloginmessage: '请尝试重新登录后再操作',
   404: '当您看到此页面时，意味着服务器找不到您所需要的页面...',
 
-  menu: require('./menu')
+  menu: require('./menu'),
+  message: require('./message')
 }

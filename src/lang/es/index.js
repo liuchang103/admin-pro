@@ -14,4 +14,5 @@ export default {
   404: 'Cuando veas esta página, el servidor no encontrará la página que necesitas...',
 
   menu: require('./menu'),
+  message: require('./message')
 }
