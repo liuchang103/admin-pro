@@ -18,6 +18,8 @@
 </template>
 
 <style lang="less" scoped>
+@import '@/style/app.less';
+
 .wscn-http404 {
   position: relative;
   width: 1200px;
@@ -154,7 +156,7 @@
       font-size: 32px;
       font-weight: bold;
       line-height: 40px;
-      color: #1482f0;
+      color: @color;
       opacity: 0;
       margin-bottom: 20px;
       animation-name: slideUp;
@@ -164,7 +166,7 @@
     &__headline {
       font-size: 20px;
       line-height: 24px;
-      color: #222;
+      color: @color-title;
       font-weight: bold;
       opacity: 0;
       margin-bottom: 30px;
@@ -178,7 +180,7 @@
       float: left;
       width: 110px;
       height: 36px;
-      background: #1482f0;
+      background: @color;
       border-radius: 100px;
       text-align: center;
       color: #ffffff;

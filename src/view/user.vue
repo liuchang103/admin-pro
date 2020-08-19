@@ -1,17 +1,23 @@
 <template>
-  <div @click="add">user</div>
+  <div>
+    <div class="page-header">
+      <div class="page-header-title">{{ $t('menu.user') }}</div>
+      <div class="page-header-desc">describe</div>
+    </div>
+    <div class="page-content">
+      <div class="page-box">
+        <div class="page-box-content">
+          <Button type="primary" @click="add">Default</Button>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 <script>
 export default {
-  data() {
-    return {
-      count: 0
-    }
-  },
   methods: {
     add() {
-      this.count++
-      this.$store.dispatch('app/count', this.count)
+      this.$store.dispatch('app/count', this.$store.state.app.count + 1)
     },
   },
 };
