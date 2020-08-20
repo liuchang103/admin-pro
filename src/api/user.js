@@ -1,8 +1,8 @@
 import http from '@/http'
 
-export function login(data) {
+export function auth(data) {
   return http.post({
-    url: '/login',
+    url: '/auth',
     data
   })
 }

@@ -13,9 +13,9 @@ export const setTitle = (text) => {
   window.document.title = title + process.env.VUE_APP_NAME
 }
 
-// 获取 token
-export const token = () => {
-  return Localstorage.get('token')
+// 获取 token or 设置 token
+export const token = (token) => {
+  return token ? Localstorage.set('token', token) : Localstorage.get('token')
 }
 
 // 获取 用户
@@ -24,9 +24,8 @@ export const userInfo = () => {
 }
 
 // 登录
-export const login = (token, user) => {
+export const login = (user) => {
   Localstorage.set('user', user)
-  Localstorage.set('token', token)
   
   Route.push({ name: 'home' })
 }

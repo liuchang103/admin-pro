@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { login } from '@/tools';
+import { token, login } from '@/tools';
 
 export default {
   data () {
@@ -36,7 +36,8 @@ export default {
   methods: {
     submit () {
       // test
-      login('123', { username: 'Administrator' })
+      token('123')
+      login({ username: 'Administrator' })
     }
   }
 }
