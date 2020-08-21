@@ -11,8 +11,9 @@
         <NavLeft class="view-main-header-left" />
         <NavRight class="view-main-header-right" />
       </Header>
-      <Content>
+      <Content :style="{ position: 'relative' }">
         <router-view />
+        <Spin size="large" fix v-if="$store.state.app.loading"></Spin>
       </Content>
       <Footer>
         <MainFooter />

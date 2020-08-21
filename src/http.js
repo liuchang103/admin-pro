@@ -1,7 +1,7 @@
 import axios from 'axios'
-import ui from './ui'
 import lang from '@/lang'
-import { token, logout } from '@/tools';
+import ui from '@/ui';
+import { token, logout, loading, loadingOver } from '@/tools';
 
 // 创建基础配置
 const http = axios.create({
@@ -14,7 +14,7 @@ http.interceptors.request.use(
   // 请求配置
   config => {
     // 进度条显示
-    ui.LoadingBar.start();
+    loading()
 
     // 追加 token
     config.headers['Authorization'] = 'Bearer ' + token()
@@ -26,7 +26,7 @@ http.interceptors.request.use(
 // 响应拦截器
 http.interceptors.response.use(response =>{
   // 进度条隐藏
-  ui.LoadingBar.finish();
+  loadingOver()
 
   // 取出响应数据
   let data = response.data
@@ -51,7 +51,7 @@ http.interceptors.response.use(response =>{
   return data;
 }, error => {
   // 错误进度条
-  ui.LoadingBar.error();
+  loadingOver(true)
 
   // 提示错误消息
   ui.Message.error(error.message)

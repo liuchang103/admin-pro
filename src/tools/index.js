@@ -1,6 +1,8 @@
 import lang from '@/lang'
 import Localstorage from './localstorage';
 import Route from '@/route'
+import ui from '@/ui';
+import store from '@/store'
 
 // 设置标题
 export const setTitle = (text) => {
@@ -36,4 +38,16 @@ export const logout = () => {
   Localstorage.del('user')
 
   Route.push({ name: 'login' })
+}
+
+// 加载中
+export const loading = () => {
+  store.commit('app/loading', true)
+  ui.LoadingBar.start()
+}
+
+// 加载完成
+export const loadingOver = (error = false) => {
+  store.commit('app/loading', false)
+  return error ? ui.LoadingBar.error() : ui.LoadingBar.finish()
 }

@@ -1,11 +1,10 @@
 import router from './route'
-import ui from './ui'
-import { token, setTitle, logout } from '@/tools'
+import { token, setTitle, logout, loading, loadingOver } from '@/tools'
 
 // 权限验证
 router.beforeEach((to, from, next) => {
   // 进度条
-  ui.LoadingBar.start();
+  loading()
 
   // 设置标题
   setTitle(to.meta.title)
@@ -13,7 +12,7 @@ router.beforeEach((to, from, next) => {
   // 检查白名单和权限
   if(!to.meta.white && !token()) {
     // 关闭进度条
-    ui.LoadingBar.finish();
+    loadingOver()
     // 退出登陆
     return logout()
   }
@@ -22,5 +21,5 @@ router.beforeEach((to, from, next) => {
 });
 
 router.afterEach(() => {
-  ui.LoadingBar.finish();
+  loadingOver()
 });

@@ -1,17 +1,14 @@
 const state = {
-  count: 0
+  loading: false
 }
 
 const mutations = {
-  count: (state, count) => {
-    state.count = count
+  loading: (state, loading) => {
+    state.loading = loading
   }
 }
 
 const actions = {
-  count({ commit }, count) {
-    commit('count', count)
-  }
 }
 
 export default {
