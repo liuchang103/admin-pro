@@ -24,37 +24,46 @@ http.interceptors.request.use(
 );
 
 // 响应拦截器
-http.interceptors.response.use(response =>{
-  // 进度条隐藏
-  loadingOver()
+http.interceptors.response.use(
+  // 正常响应
+  response => {
+    // 取出响应数据
+    let data = response.data
+    
+    // 检测状态码
+    if(data.code > 0) {
+      // 错误进度条
+      loadingOver(true)
 
-  // 取出响应数据
-  let data = response.data
-  
-  // 检测状态码
-  if(data.code > 0) {
-    // 如果未登陆
-    if(data.code == 100) {
-      // 通知消息
-      ui.Notice.error({
-        title: lang.t(data.message),
-        desc: lang.t('failedloginmessage')
-      })
+      // 如果未登陆
+      if(data.code == 100) {
+        // 通知消息
+        ui.Notice.error({
+          title: lang.t(data.message),
+          desc: lang.t('failedloginmessage')
+        })
 
-      // 退出登陆
-      return logout()
+        // 退出登陆
+        return logout()
+      }
+
+      return Promise.reject(data)
     }
+    
+    // 进度条隐藏
+    loadingOver()
 
-    return Promise.reject(data)
+    return data;
+  }, 
+
+  // 异常响应
+  error => {
+    // 错误进度条
+    loadingOver(true)
+
+    // 提示错误消息
+    ui.Message.error(error.message)
   }
-  
-  return data;
-}, error => {
-  // 错误进度条
-  loadingOver(true)
-
-  // 提示错误消息
-  ui.Message.error(error.message)
-});
+);
 
 export default http
