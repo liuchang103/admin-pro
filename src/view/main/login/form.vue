@@ -7,7 +7,7 @@
       <Input size="large" type="password" v-model="form.password" :placeholder="$t('password')" prefix="ios-lock-outline" @on-enter="submit" />
     </FormItem>
     <FormItem>
-      <Button size="large" type="primary" @click="submit" long>{{ $t('login') }}</Button>
+      <Button size="large" type="primary" :loading="loading" @click="submit" long>{{ $t('login') }}</Button>
     </FormItem>
   </Form>
 </template>
@@ -18,6 +18,7 @@ import { token, login } from '@/tools';
 export default {
   data () {
     return {
+      loading: false,
       form: {
         username: '',
         password: ''
@@ -35,9 +36,18 @@ export default {
 
   methods: {
     submit () {
-      // test
-      token('123')
-      login({ username: 'Administrator' })
+      // 登陆
+      this.$refs.form.validate((valid) => {
+        if (valid) {
+          this.loading = true
+
+          // 模拟登陆
+          setTimeout(() => {
+            token('123')
+            login({ username: 'Administrator' })
+          }, 2000)
+        }
+      })
     }
   }
 }

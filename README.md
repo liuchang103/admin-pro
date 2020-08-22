@@ -14,6 +14,7 @@ npm run build
 /lang/                    多语言配置文件
 /main/                    后台窗体核心目录
 /route/                   路由存放目录
+/store/                   Vuex全局数据
 /style/                   样式存放目录
 /tools/                   常用工具目录
 /view/main/               分离的组件目录，基本都是全局引用

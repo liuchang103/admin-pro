@@ -2,7 +2,7 @@ module.exports = [
   {
     path: '/',
     name: 'home',
-    component: () => import('@/view/home.vue'),
+    component: () => import('@/view/home'),
     meta: {
       title: 'menu.home',
       menu: 'home'
@@ -10,7 +10,7 @@ module.exports = [
   },
   {
     path: 'user',
-    component: () => import('@/view/user.vue'),
+    component: () => import('@/view/user'),
     meta: {
       title: 'menu.user',
       menu: '1-user'
