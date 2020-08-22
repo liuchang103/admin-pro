@@ -56,12 +56,50 @@ meta: {
 ```
 import { token, userInfo, login, logout } from '@/tools';
 
-// 获取 token
-token()
-// 获取用户 json
+// 获取token or 写入token
+token(token)
+
+// 获取登陆用户信息
 userInfo()
-// 登录，传入 token 和 用户信息并跳转窗体首页
-login(token, userinfo)
+
+// 登录，传入用户信息并跳转窗体首页
+login(userinfo)
+
 // 登出，清空 token 和 用户信息并跳转登陆页
 logout()
+```
+
+## Loading
+路由跳转 与 http请求 均有顶部 loading进度条 和 窗体loading，依托与两个全局方法
+```
+import { loading, loadingOver } from '@/tools';
+
+// 出现进度条
+loading()
+
+// 进度条完成
+loadingOver()
+
+// 出现进度条并窗体loading
+loading(true)
+
+// 进度条完成并标识 Error
+loadingOver(true)
+```
+当请求http时，所有请求均会出现进度条，如果请求失败，将出现进度条 Error.
+
+有的请求需要使窗体loading，有的不需要，这将可以在 api接口中，写入如下配置
+```
+import http from '@/http'
+
+export function auth(data) {
+  return http.post('/auth', data)
+}
+
+ // 出现窗体 loading 的接口
+export function info() {
+  return http.get('/info', {
+    loading: true
+  })
+}
 ```

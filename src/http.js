@@ -14,7 +14,7 @@ http.interceptors.request.use(
   // 请求配置
   config => {
     // 进度条显示
-    loading()
+    loading(config.loading)
 
     // 追加 token
     config.headers['Authorization'] = 'Bearer ' + token()

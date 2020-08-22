@@ -40,13 +40,13 @@ export const logout = () => {
   Route.push({ name: 'login' })
 }
 
-// 加载中
-export const loading = () => {
-  store.commit('app/loading', true)
+// 加载中，loading 为 true 将出现窗体 Loading
+export const loading = (loading = false) => {
   ui.LoadingBar.start()
+  return loading ? store.commit('app/loading', true) : false;
 }
 
-// 加载完成
+// 加载完成，error 为 true 将出现红色进度条
 export const loadingOver = (error = false) => {
   store.commit('app/loading', false)
   return error ? ui.LoadingBar.error() : ui.LoadingBar.finish()

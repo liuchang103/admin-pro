@@ -4,7 +4,7 @@ import { token, setTitle, logout, loading, loadingOver } from '@/tools'
 // 权限验证
 router.beforeEach((to, from, next) => {
   // 进度条
-  loading()
+  loading(true)
 
   // 设置标题
   setTitle(to.meta.title)
