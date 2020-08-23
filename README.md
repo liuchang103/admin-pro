@@ -104,3 +104,20 @@ export function info() {
   })
 }
 ```
+
+## 上传组件
+内置了一个上传组件，可直接调用，前提是要修改里面的上传接口地址
+```
+<Upload ref="upload" />
+
+import Upload from '@/main/components/upload';
+
+// 设置单图上传
+this.$refs.upload.set('/a.png')
+
+// 设置多图上传
+this.$refs.upload.set(['/a.png', '/b.png'])
+
+// 获取已上传图片
+this.$refs.upload.get()
+```
