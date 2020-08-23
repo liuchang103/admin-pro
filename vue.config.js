@@ -3,7 +3,7 @@ module.exports = {
   devServer: {
     proxy: {
       [process.env.VUE_APP_BASE_API]: {
-        target: process.env.VUE_APP_PROXY_URL,
+        target: process.env.VUE_APP_URL,
         changeOrigin: true
       }
     }

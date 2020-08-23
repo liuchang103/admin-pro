@@ -38,7 +38,6 @@ export default {
     // 自动登陆
     if(token() && userInfo()) {
       // 再次登陆
-      token(token())
       login(userInfo())
     }
   }

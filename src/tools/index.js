@@ -51,3 +51,8 @@ export const loadingOver = (error = false) => {
   store.commit('app/loading', false)
   return error ? ui.LoadingBar.error() : ui.LoadingBar.finish()
 }
+
+// url 地址
+export const url = (path) => {
+  return process.env.VUE_APP_URL + path
+}
