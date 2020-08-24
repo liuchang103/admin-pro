@@ -1,6 +1,6 @@
 <template>
   <Menu ref="menu" :active-name="active" :open-names="open" width="auto" accordion>
-    <MainMenu />
+    <MainMenu :update="update" />
   </Menu>
 </template>
 <script>
@@ -29,6 +29,11 @@ export default {
     // 更新菜单焦点
     update() {
       let name = this.$route.meta.menu
+
+      // 判断 menu 类型
+      if(typeof name == 'function') {
+        name = name(this.$route)
+      }
       
       // 分割菜单名
       this.active = name

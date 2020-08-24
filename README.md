@@ -51,6 +51,18 @@ meta: {
     white: true            // 放行白名单，不检查登陆
 }
 ```
+## 菜单
+修改窗体左侧菜单，位于 /view/main/left/menu.vue 中。
+
+注意：里面自带一个 props 为 update()，当菜单中有异步加载的情况，可手动执行，让菜单重新定位
+```
+// 获取数据
+getMenu().then(data => {
+  this.menu = data
+  // 手动定位菜单
+  this.update()
+})
+```
 
 ## 登陆
 全局共用方法，会在所有权限检查地方调用
@@ -106,7 +118,7 @@ export function info() {
 ```
 
 ## 上传组件
-内置了一个上传组件，可直接调用，前提是要修改里面的上传接口地址
+内置了一个上传组件，可直接调用。上传地址在 .env 中的 VUE_APP_UPLOAD
 ```
 <Upload ref="upload" />
 

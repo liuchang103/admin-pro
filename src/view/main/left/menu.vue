@@ -34,6 +34,14 @@
   </div>
 </template>
 
+<script>
+export default {
+  props: {
+    update: Function
+  }
+}
+</script>
+
 <style lang="less" scoped>
   .scoped-right{
     float:right;
