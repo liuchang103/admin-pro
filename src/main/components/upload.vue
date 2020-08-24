@@ -22,7 +22,7 @@
       :max-size="2048"
       :multiple="multiple"
       :on-success="handleSuccess"
-      action="/api/upload"
+      :action="action"
       type="drag"
       style="display: inline-block;width:58px;"
     >
@@ -43,6 +43,7 @@ import { url } from '@/tools'
 export default {
   data() {
     return {
+      action: process.env.VUE_APP_UPLOAD,
       img: "",
       visible: false,
       listVisible: false,
