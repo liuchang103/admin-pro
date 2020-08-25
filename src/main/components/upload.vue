@@ -1,10 +1,10 @@
 <template>
   <div>
     <template v-if="listVisible">
-      <div class="upload-list" v-for="(item, key) in $refs.upload.fileList" :key="key">
+      <div class="scoped-upload-list" v-for="(item, key) in $refs.upload.fileList" :key="key">
         <template v-if="item.status === 'finished'">
           <img :src="item.url | url" />
-          <div class="upload-list-item">
+          <div class="scoped-upload-list-item">
             <Icon type="ios-eye-outline" @click.native="handleView(item)" />
             <Icon type="ios-trash-outline" @click.native="handleRemove(item)" />
           </div>
@@ -26,7 +26,7 @@
       type="drag"
       style="display: inline-block;width:58px;"
     >
-      <Icon type="ios-camera" size="20" style="line-height: 58px;" />
+      <Icon type="md-cloud-upload" size="20" style="line-height: 58px;" />
     </Upload>
     <Modal v-model="visible" footer-hide>
       <img
@@ -96,6 +96,9 @@ export default {
     },
     handleRemove(file) {
       this.$refs.upload.fileList.splice(this.$refs.upload.fileList.indexOf(file), 1);
+
+      // 触发事件
+      this.$emit('remove', file.url)
     },
     handleSuccess(response, file) {
       file.url = response.url
@@ -104,12 +107,15 @@ export default {
       if(!this.multiple) {
         this.set(file.url)
       }
+
+      // 触发事件
+      this.$emit('success', file.url)
     }
   }
 };
 </script>
 <style lang="less" scoped>
-.upload-list {
+.scoped-upload-list {
   display: inline-block;
   width: 60px;
   height: 60px;

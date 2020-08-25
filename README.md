@@ -119,8 +119,12 @@ export function info() {
 
 ## 上传组件
 内置了一个上传组件，可直接调用。上传地址在 .env 中的 VUE_APP_UPLOAD
+
+有两个监听事件：
++ success 上传图片成功时，返回图片路径
++ remove 删除图片时，返回图片路径
 ```
-<Upload ref="upload" />
+<Upload ref="upload" @success="success" @remove="remove />
 
 import Upload from '@/main/components/upload';
 

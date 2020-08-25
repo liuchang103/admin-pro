@@ -1,5 +1,5 @@
 <template>
-  <Modal v-model="modal" :title="title" width="350">
+  <Modal v-model="modal" :title="title" width="800">
     <Form ref="form" :model="form" :rules="rule" :label-width="60">
       <FormItem label="a" prop="a">
         <Input v-model="form.a" />
@@ -13,6 +13,12 @@
       <FormItem label="d" prop="d">
         <Input v-model="form.d" />
       </FormItem>
+      <FormItem>
+        <Upload />
+      </FormItem>
+      <FormItem>
+        <Editor v-model="content" :height="200" />
+      </FormItem>
     </Form>
     <div slot="footer">
       <Button type="primary" :loading="loading" @click="onPost">{{ title }}</Button>
@@ -20,7 +26,14 @@
   </Modal>
 </template>
 <script>
+import Upload from '@/main/components/upload'
+import Editor from '@/main/components/editor'
+
 export default {
+  components: {
+    Upload,
+    Editor
+  },
   computed: {
     title() {
       return this.form.id ? 'Update' : 'Create'
@@ -35,7 +48,8 @@ export default {
         a: '',
         b: '',
         c: '',
-        d: ''
+        d: '',
+        content: ''
       },
       rule: {
         a: [
@@ -50,7 +64,8 @@ export default {
         d: [
           { required: true, message: ' ', trigger: 'blur' }
         ]
-      }
+      },
+      content: ''
     }
   },
   methods: {
