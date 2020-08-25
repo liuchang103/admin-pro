@@ -149,6 +149,7 @@ export default {
   .scoped-editor{
     background: #fff;
     border-radius: 6px;
+    line-height: 1.5;
 
     &-tool{
       padding: 12px 6px 0;
