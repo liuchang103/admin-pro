@@ -137,3 +137,11 @@ this.$refs.upload.set(['/a.png', '/b.png'])
 // 获取已上传图片
 this.$refs.upload.get()
 ```
+
+## 富文本
+基于 quill 封装的组件，非常简单，共用自带上传组件
+```
+<Editor v-model="content" :height="200" />
+
+import Editor from '@/main/components/editor'
+```
