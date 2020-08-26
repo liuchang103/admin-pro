@@ -146,22 +146,26 @@ export default {
 <style lang="less" scoped>
   @import '@/style/app.less';
 
+  // 验证上传提示
+  .ivu-form-item-error{
+    .scoped-editor{
+      border-color: @color-error;
+    }
+  }
+
   .scoped-editor{
     background: #fff;
     border-radius: 6px;
     line-height: 1.5;
+    border: 1px @color-border solid;
 
     &-tool{
       padding: 12px 6px 0;
-      border: 1px @color-border solid;
-      border-bottom: 0;
-      border-radius: 6px 6px 0 0;
+      border: 0;
     }
 
     &-content{
-      border: 1px @color-border solid;
-      border-top: 0;
-      border-radius: 0 0 6px 6px;
+      border: 0;
     }
 
     select{

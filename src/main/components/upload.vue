@@ -189,3 +189,13 @@ export default {
   }
 }
 </style>
+
+<style lang="less">
+  @import '@/style/app.less';
+  // 验证上传提示
+  .ivu-form-item-error{
+    .ivu-upload-drag{
+      border-color: @color-error;
+    }
+  }
+</style>
