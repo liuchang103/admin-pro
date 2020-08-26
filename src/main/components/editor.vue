@@ -53,7 +53,7 @@ export default {
     value(value) {
       // 设置内容，外界内容发生变动再更新
       if(value !== this.content) {
-        this.editor.setText(value)
+        this.editor.root.innerHTML = value
       }
     }
   },
