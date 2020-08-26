@@ -41,6 +41,18 @@
 import { url } from '@/tools'
 
 export default {
+  props: {
+    value: [String, Array]
+  },
+  watch: {
+    // 监听双向绑定
+    value() {
+      // 如果重复，将不更新
+      if(this.value !== this.valueTemp) {
+        this.set(this.value)
+      }
+    }
+  },
   data() {
     return {
       action: process.env.VUE_APP_UPLOAD,
@@ -48,7 +60,10 @@ export default {
       visible: false,
       listVisible: false,
       defaultList: [],
-      multiple: false
+      multiple: false,
+
+      // 双向绑定缓存
+      valueTemp: false,
     }
   },
   filters: {
@@ -78,16 +93,32 @@ export default {
         }
       }
 
+      // 更新默认列表及缓存
+      this.valueTemp = data
       this.defaultList = data
     },
 
     // 获取当前上传列表
     get() {
-      let data = this.$refs.upload.fileList.map(item => {
-        return item.url
-      }) 
+      // 上传文件列表
+      const fileList = this.$refs.upload.fileList
+      // 整理新数组
+      let data = []
+      // 循环文件列表
+      for (const key in fileList) {
+        if (fileList[key].url) {
+          data.push(fileList[key].url)
+        }
+      }
 
       return this.multiple ? data : (data[0] || '') 
+    },
+
+    // 触发双向绑定
+    input() {
+      let input = this.get()
+      this.valueTemp = input
+      this.$emit('input', this.valueTemp)
     },
 
     handleView(file) {
@@ -98,6 +129,7 @@ export default {
       this.$refs.upload.fileList.splice(this.$refs.upload.fileList.indexOf(file), 1);
 
       // 触发事件
+      this.input()
       this.$emit('remove', file.url)
     },
     handleSuccess(response, file) {
@@ -105,10 +137,11 @@ export default {
 
       // 如果是单图
       if(!this.multiple) {
-        this.set(file.url)
+        this.$refs.upload.fileList = [file]
       }
 
       // 触发事件
+      this.input()
       this.$emit('success', file.url)
     }
   }

@@ -14,10 +14,10 @@
         <Input v-model="form.d" />
       </FormItem>
       <FormItem>
-        <Upload />
+        <Upload v-model="form.images" />
       </FormItem>
       <FormItem>
-        <Editor v-model="content" :height="200" />
+        <Editor v-model="form.content" :height="200" />
       </FormItem>
     </Form>
     <div slot="footer">
@@ -43,12 +43,16 @@ export default {
     return {
       modal: false,
       loading: false,
-      form: {},
+      form: {
+        images: [],
+        content: ''
+      },
       field: {
         a: '',
         b: '',
         c: '',
         d: '',
+        images: [],
         content: ''
       },
       rule: {

@@ -124,22 +124,21 @@ export function info() {
 + success 上传图片成功时，返回图片路径
 + remove 删除图片时，返回图片路径
 ```
-<Upload ref="upload" @success="success" @remove="remove />
+<Upload v-model="images" ref="upload" @success="success" @remove="remove />
 
 import Upload from '@/main/components/upload';
 
-// 设置单图上传
-this.$refs.upload.set('/a.png')
+// 设置单图上传，string 类型
+this.images = ''
+this.images = '/a.png'
 
-// 设置多图上传
-this.$refs.upload.set(['/a.png', '/b.png'])
-
-// 获取已上传图片
-this.$refs.upload.get()
+// 设置多图上传，array 类型
+this.images = []
+this.images = ['/a.png', '/b.png']
 ```
 
 ## 富文本
-基于 quill 封装的组件，非常简单，共用自带上传组件
+基于 quill 封装的组件，非常简单，共用内置上传组件
 ```
 <Editor v-model="content" :height="200" />
 
