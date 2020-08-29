@@ -38,7 +38,6 @@
   </div>
 </template>
 <script>
-import { url } from '@/tools'
 
 export default {
   props: {
@@ -64,11 +63,6 @@ export default {
 
       // 双向绑定缓存
       valueTemp: false,
-    }
-  },
-  filters: {
-    url(text) {
-      return url(text)
     }
   },
   mounted() {
