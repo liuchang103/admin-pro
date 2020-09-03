@@ -39,7 +39,7 @@ import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 import Quill from 'quill'
 import Upload from './upload'
-import { url } from '@/tools'
+import app from '@/tools'
 
 export default {
   components: {
@@ -93,7 +93,7 @@ export default {
   methods: {
     // 上传图片
     uploadSuccess(file) {
-      this.editor.insertEmbed(this.editor.getSelection(true).index, 'image', url(file));
+      this.editor.insertEmbed(this.editor.getSelection(true).index, 'image', app.url(file));
     },
     // 删除图片
     uploadRemove(file) {
@@ -101,7 +101,7 @@ export default {
 
       // 检查有使用此地址的嵌入
       this.editor.getContents().map(item => {
-        if(item.insert.image !== url(file)) {
+        if(item.insert.image !== app.url(file)) {
           data.push(item)
         }
       })

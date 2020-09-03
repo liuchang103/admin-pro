@@ -24,7 +24,7 @@ import Footer from '@/view/main/footer'
 import LoginForm from '@/view/main/login/form'
 import LoginLeft from '@/view/main/login/left'
 import Lang from './components/lang'
-import { token, userInfo, login } from '@/tools';
+import app from '@/tools';
 
 export default {
   components: {
@@ -36,9 +36,9 @@ export default {
   },
   created() {
     // 自动登陆
-    if(token() && userInfo()) {
-      // 再次登陆
-      login(userInfo())
+    if(app.token() && app.user()) {
+      // 进入后台首页
+      app.home()
     }
   }
 }

@@ -10,9 +10,10 @@ import router from './route'
 import i18n from './lang';
 
 // 工具
-import '@/tools/filters'
+import app from '@/tools'
 
-Vue.config.productionTip = false
+// 初始化
+app.run()
 
 new Vue({
   i18n,

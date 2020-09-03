@@ -11,12 +11,12 @@
 </template>
 
 <script>
-import { logout, userInfo } from '@/tools';
+import app from '@/tools';
 
 export default {
   computed: {
     username () {
-      return userInfo().username
+      return app.user().username
     }
   },
 
@@ -25,7 +25,7 @@ export default {
     to (key) {
       switch (key) {
         case 'logout':
-          logout()
+          app.logout()
           break;
       }
     },

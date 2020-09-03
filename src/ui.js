@@ -5,6 +5,9 @@ import ViewUI from 'view-design'
 import 'view-design/dist/styles/iview.css'
 Vue.use(ViewUI);
 
+// 阻止产生消息
+Vue.config.productionTip = false
+
 // 格式化CSS
 import 'normalize.css/normalize.css'
 

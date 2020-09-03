@@ -1,7 +1,7 @@
 import Vue from 'vue'
-import { url } from './index'
+import app from './index'
 
 // url 过滤器
 Vue.filter('url', function (value) {
-  return url(value)
+  return app.url(value)
 })

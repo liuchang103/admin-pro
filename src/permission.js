@@ -1,25 +1,30 @@
 import router from './route'
-import { token, setTitle, logout, loading, loadingOver } from '@/tools'
+import app from '@/tools'
 
 // 权限验证
 router.beforeEach((to, from, next) => {
   // 进度条
-  loading(true)
+  app.loading.start(true)
 
   // 设置标题
-  setTitle(to.meta.title)
+  app.title(to.meta.title)
 
   // 检查白名单和权限
-  if(!to.meta.white && !token()) {
+  if(!to.meta.white && !app.token()) {
     // 关闭进度条
-    loadingOver()
+    app.loading.over()
     // 退出登陆
-    return logout()
+    return app.logout()
+  }
+
+  // 检查权限
+  if(to.meta.permission && !app.can(to.meta.permission)) {
+    return next('/404')
   }
 
   next()
 });
 
 router.afterEach(() => {
-  loadingOver()
+  app.loading.over()
 });

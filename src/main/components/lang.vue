@@ -12,7 +12,7 @@
 
 <script>
 import Lang from '@/view/main/lang.vue'
-import LocalStorage from '@/tools/localstorage'
+import app from '@/tools'
 
 export default {
   props: {
@@ -23,8 +23,7 @@ export default {
   },
   methods: {
     lang (lang) {
-      this.$i18n.locale = lang
-      LocalStorage.set('lang', lang)
+      app.lang(lang)
     }
   }
 }

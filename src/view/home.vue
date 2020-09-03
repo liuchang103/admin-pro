@@ -54,12 +54,3 @@
     </Row>
   </div>
 </template>
-<script>
-import Permission from '@/tools/permission'
-
-export default {
-  created() {
-    console.log(Permission.can(['bb']))
-  }
-}
-</script>

@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { token, login } from '@/tools';
+import app from '@/tools';
 
 export default {
   data () {
@@ -41,10 +41,10 @@ export default {
         if (valid) {
           this.loading = true
 
-          // 模拟登陆
           setTimeout(() => {
-            token('123')
-            login({ username: 'Administrator' })
+            // 模拟登陆
+            app.token('123')
+            app.login({ username: 'Administrator' }, ['user'])
           }, 2000)
         }
       })

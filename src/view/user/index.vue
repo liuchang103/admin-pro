@@ -20,6 +20,7 @@
 <script>
 import Table from './table'
 import Form from './form'
+import { list } from '@/api/test'
 
 export default {
   components:{
@@ -37,43 +38,9 @@ export default {
   methods: {
     // 获取最新配置
     getData() {
-      this.list = [
-        {
-          id: 1,
-          a: 'a',
-          b: 'b',
-          c: 'c',
-          d: 'd'
-        },
-        {
-          id: 2,
-          a: 'a',
-          b: 'b',
-          c: 'c',
-          d: 'd'
-        },
-        {
-          id: 3,
-          a: 'a',
-          b: 'b',
-          c: 'c',
-          d: 'd'
-        },
-        {
-          id: 4,
-          a: 'a',
-          b: 'b',
-          c: 'c',
-          d: 'd'
-        },
-        {
-          id: 5,
-          a: 'a',
-          b: 'b',
-          c: 'c',
-          d: 'd'
-        }
-      ]
+      list().then(data => {
+        this.list = data
+      })
     },
 
     // 删除

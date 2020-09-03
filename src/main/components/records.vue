@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import LocalStorage from '@/tools/localstorage'
+import app from '@/tools'
 
 // 最多存放数量
 const count = 5;
@@ -36,7 +36,7 @@ export default {
   },
   created() {
     // 取出缓存
-    let storage = LocalStorage.get('records')
+    let storage = app.storage.get('records')
     if (storage) {
       this.list = this.list.concat(storage)
     }
@@ -58,7 +58,7 @@ export default {
       this.check()
 
       // 存储
-      LocalStorage.set('records', this.list)
+      app.storage.set('records', this.list)
     },
 
     // 重复

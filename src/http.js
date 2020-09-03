@@ -1,7 +1,7 @@
 import axios from 'axios'
 import lang from '@/lang'
 import ui from '@/ui';
-import { token, logout, loading, loadingOver } from '@/tools';
+import app from '@/tools';
 
 // 创建基础配置
 const http = axios.create({
@@ -14,10 +14,10 @@ http.interceptors.request.use(
   // 请求配置
   config => {
     // 进度条显示
-    loading(config.loading)
+    app.loading.start(config.loading)
 
     // 追加 token
-    config.headers['Authorization'] = 'Bearer ' + token()
+    config.headers['Authorization'] = 'Bearer ' + app.token()
 
     return config;
   }
@@ -33,7 +33,7 @@ http.interceptors.response.use(
     // 检测状态码
     if(data.code > 0) {
       // 错误进度条
-      loadingOver(true)
+      app.loading.over(true)
 
       // 如果未登陆
       if(data.code == 100) {
@@ -44,14 +44,14 @@ http.interceptors.response.use(
         })
 
         // 退出登陆
-        return logout()
+        app.logout()
       }
 
       return Promise.reject(data)
     }
     
     // 进度条隐藏
-    loadingOver()
+    app.loading.over()
 
     return data;
   }, 
@@ -59,7 +59,7 @@ http.interceptors.response.use(
   // 异常响应
   error => {
     // 错误进度条
-    loadingOver(true)
+    app.loading.over(true)
 
     // 提示错误消息
     ui.Message.error(error.message)

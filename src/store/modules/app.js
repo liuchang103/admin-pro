@@ -1,11 +1,7 @@
 const state = {
-  loading: false
 }
 
 const mutations = {
-  loading: (state, loading) => {
-    state.loading = loading
-  }
 }
 
 const actions = {

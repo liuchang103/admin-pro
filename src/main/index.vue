@@ -13,7 +13,7 @@
       </Header>
       <Content :style="{ position: 'relative' }">
         <router-view />
-        <Spin size="large" fix v-if="$store.state.app.loading"></Spin>
+        <Spin size="large" fix v-if="loading.status"></Spin>
       </Content>
       <Footer>
         <MainFooter />
@@ -29,6 +29,7 @@ import Logo from '@/view/main/logo';
 import MainFooter from '@/view/main/footer';
 import LeftTop from '@/view/main/left/top';
 import LeftBottom from '@/view/main/left/bottom';
+import app from '@/tools'
 
 import './main.less'
 
@@ -41,6 +42,11 @@ export default {
     MainFooter,
     LeftTop,
     LeftBottom
+  },
+  data() {
+    return {
+      loading: app.loading
+    }
   }
 };
 </script>

@@ -28,6 +28,7 @@
 <script>
 import Upload from '@/main/components/upload'
 import Editor from '@/main/components/editor'
+import { create } from '@/api/test'
 
 export default {
   components: {
@@ -94,11 +95,15 @@ export default {
       this.$refs.form.validate((valid) => {
         if (valid) {
           this.loading = true
-          setTimeout(() => {
+          create(this.form).then(res => {
             this.close()
             this.loading = false
+            this.$Message.success(res.message)
             this.$emit('get')
-          }, 2000)
+          }).catch(res => {
+            this.loading = false
+            this.$Message.error(res.message)
+          })
         }
       })
     }

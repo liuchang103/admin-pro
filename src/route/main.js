@@ -13,7 +13,8 @@ module.exports = [
     component: () => import('@/view/user'),
     meta: {
       title: 'menu.user',
-      menu: '1-user'
+      menu: '1-user',
+      permission: 'user'
     }
   }
 ]

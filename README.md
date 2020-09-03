@@ -67,37 +67,37 @@ getMenu().then(data => {
 ## 登陆
 全局共用方法，会在所有权限检查地方调用
 ```
-import { token, userInfo, login, logout } from '@/tools';
+import app from '@/tools';
 
 // 获取token or 写入token
-token(token)
+app.token(token)
 
 // 获取登陆用户信息
-userInfo()
+app.user()
 
 // 登录，传入用户信息并跳转窗体首页
-login(userinfo)
+app.login(userinfo)
 
 // 登出，清空 token 和 用户信息并跳转登陆页
-logout()
+app.logout()
 ```
 
 ## Loading
 路由跳转 与 http请求 均有顶部 loading进度条 和 窗体loading，依托与两个全局方法
 ```
-import { loading, loadingOver } from '@/tools';
+import app from '@/tools';
 
 // 出现进度条
-loading()
+app.loading.start()
 
 // 进度条完成
-loadingOver()
+app.loading.over()
 
 // 出现进度条并窗体loading
-loading(true)
+app.loading.start(true)
 
 // 进度条完成并标识 Error
-loadingOver(true)
+app.loading.over(true)
 ```
 当请求http时，所有请求均会出现进度条，如果请求失败，将出现进度条 Error.
 
