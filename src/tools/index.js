@@ -5,6 +5,7 @@ import loading from './loading'
 
 // Vue依赖
 import './filters'
+import './directive'
 
 export default {
   // 初始化
