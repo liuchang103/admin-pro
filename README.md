@@ -17,7 +17,8 @@ npm run build
 /store/                   Vuex全局数据
 /style/                   样式存放目录
 /tools/                   常用工具目录
-/view/main/               分离的组件目录，基本都是全局引用
+/view/                    视图目录
+/view/main/               分离组件目录，基本都是全局引用
 ```
 ## 后台窗体
 窗体分为三部分 left header content，这个为 Admin 的窗体。
@@ -25,6 +26,23 @@ npm run build
 此框架将 **后台窗体** 的部分逻辑分离为组件，意味着 /main/ 窗体核心目录最好不修改，只变动分离出去的组件，即可达到目的
 
 分离的组件在 /view/main/ 中，在此能找到相关的组件，可自定义修改，全局将发生变动
+
+## 分离组件
+```
+/header/left              头部左侧追加组件
+/header/right             头部右侧追加组件
+/header/user              头部右侧用户管理组件，也可用于右侧追加
+
+/left/bottom              左侧导航底部追加
+/left/top                 左侧导航顶部追加
+/left/menu                左侧导航
+
+/login/form               登陆页表单及登陆逻辑组件
+/login/left               登陆页左侧显示组件
+
+/footer                   全局底部版权组件
+/logo                     全局logo组件
+```
 
 ## 路由
 路由存在目录下有两个文件
@@ -69,7 +87,7 @@ getMenu().then(data => {
 ```
 
 ## 工具
-全局共用方法，会在所有权限检查地方调用
+全局方法，位于 /tools/index.js
 ```
 import app from '@/tools';
 
@@ -110,6 +128,7 @@ app.storage.del('test')
 ```
 
 ## Loading
+位于 /tools/loading.js
 路由跳转 与 http请求 均有顶部 loading进度条 和 窗体loading，依托与两个全局方法
 ```
 import app from '@/tools';

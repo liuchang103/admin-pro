@@ -14,12 +14,23 @@ import es from './es';
 Vue.use(VueI18n);
 Vue.locale = () => {};
 
+// 语言项
+const messages = {
+  zh: Object.assign(zh, zhCN),
+  en: Object.assign(en, enUS),
+  es: Object.assign(es, esES),
+}
+
 const I18n = new VueI18n({
   locale: process.env.VUE_APP_LANG,
-  messages: {
-    zh: Object.assign(zh, zhCN),
-    en: Object.assign(en, enUS),
-    es: Object.assign(es, esES),
+  messages
+})
+
+// 导出语言项名
+export const language = Object.keys(messages).map(lang => {
+  return {
+    lang,
+    name: messages[lang].lang
   }
 })
 

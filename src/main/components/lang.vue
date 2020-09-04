@@ -4,22 +4,31 @@
       <Icon type="md-globe" size="18" class="view-main-header-item-icon" /> 
       <span class="scoped-lang">{{ $t('lang') }}</span>
       <DropdownMenu slot="list">
-        <Lang />
+        <template v-for="(lang, key) in language">
+          <DropdownItem :name="lang.lang" :key="key">
+            <Badge 
+              :status="$i18n.locale == lang.lang ? 'processing' : 'default'" 
+              :text="lang.name"
+            />
+          </DropdownItem>
+        </template>
       </DropdownMenu>
     </Dropdown>
   </span>
 </template>
 
 <script>
-import Lang from '@/view/main/lang.vue'
+import { language } from '@/lang'
 import app from '@/tools'
 
 export default {
   props: {
     type: String
   },
-  components: {
-    Lang
+  data() {
+    return {
+      language
+    }
   },
   methods: {
     lang (lang) {
