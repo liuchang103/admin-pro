@@ -50,6 +50,10 @@ meta: {
 meta: {
     white: true            // 放行白名单，不检查登陆
 }
+
+meta: {
+    permission: ['user', 'user-list']            // 访问权限
+
 ```
 ## 菜单
 修改窗体左侧菜单，位于 /view/main/left/menu.vue 中。
@@ -64,7 +68,7 @@ getMenu().then(data => {
 })
 ```
 
-## 登陆
+## 工具
 全局共用方法，会在所有权限检查地方调用
 ```
 import app from '@/tools';
@@ -75,11 +79,34 @@ app.token(token)
 // 获取登陆用户信息
 app.user()
 
-// 登录，传入用户信息并跳转窗体首页
-app.login(userinfo)
+// 登录，传入用户信息与权限数组并跳转窗体首页
+// permission 默认为 *，将拥有所有权限
+app.login(userinfo, permission)
 
 // 登出，清空 token 和 用户信息并跳转登陆页
 app.logout()
+
+// 验证权限
+app.can('user')
+app.can(['user', 'admin'])
+
+// 设置标题
+app.title('List')
+
+// 设置语言
+app.lang('en')
+
+// 拼接 url
+app.url('/upload/1.jpg')
+
+// 设置本地缓存
+app.storage.set('test', 'test')
+
+// 获取本地缓存
+app.storage.get('test')
+
+// 删除本地缓存
+app.storage.del('test')
 ```
 
 ## Loading
@@ -115,6 +142,20 @@ export function info() {
     loading: true
   })
 }
+```
+
+## 全局过滤器
+位于 /tools/filters.js
+```
+// url 过滤器
+<img src="img | url">
+```
+
+## 全局指令器
+位于 /tools/directive.js
+```
+// 是否有权限显示
+<Button v-permission="['user-edit']">编辑</Button>
 ```
 
 ## 上传组件
